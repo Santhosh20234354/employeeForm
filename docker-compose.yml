@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"    # Expose MySQL port for external access if needed (optional)
+    volumes:
+      - mysql-data:/var/lib/mysql   # Persist MySQL data
+
+  # Backend Service (Node.js)
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "5000:5000"  # Expose backend API port
+    volumes:
+      - ./backend:/app   # Mount backend code to the container
+    environment:
+      - DB_HOST=mysql    # Database host (pointing to the mysql service)
+      - DB_USER=user     # Database user
+      - DB_PASSWORD=password  # Database password
+      - DB_NAME=mydatabase  # Database name
+    depends_on:
+      - mysql             # Ensure MySQL container starts before the backend
+
+  # Frontend Service (React)
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"  # Expose React development server port
+    depends_on:
+      - backend      # Ensure the backend is up before starting the frontend
+
+volumes:
+  mysql-data:  # Volume for MySQL data persistence
