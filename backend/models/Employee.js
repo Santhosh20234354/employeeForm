@@ -1,6 +1,5 @@
 const db = require('../config/db');
 
-// Add new employee to database
 const addEmployee = (employee, callback) => {
     const { name, employeeID, email, phone, department, dateOfJoining, role } = employee;
 
@@ -9,7 +8,7 @@ const addEmployee = (employee, callback) => {
     db.query(query, [name, employeeID, email, phone, department, dateOfJoining, role], callback);
 };
 
-// Check for duplicate employee (EmployeeID or Email)
+
 const checkDuplicate = (employeeID, email, callback) => {
     const query = `SELECT * FROM employees WHERE employeeID = ? OR email = ?`;
     db.query(query, [employeeID, email], callback);

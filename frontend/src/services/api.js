@@ -5,3 +5,4 @@ const api = axios.create({
 });
 
 export const addEmployee = (data) => api.post('/', data);
+
