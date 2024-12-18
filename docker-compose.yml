@@ -43,3 +43,4 @@ services:
 
 volumes:
   mysql-data:  # Volume for MySQL data persistence
+
