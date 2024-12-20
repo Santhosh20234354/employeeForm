@@ -26,7 +26,7 @@ function EmployeeForm() {
         setSuccess('');
     
         try {
-            await addEmployee(form);
+            await addEmployee(form); // Make the POST request to the backend
             setSuccess('Employee added successfully!');
             setForm({ name: '', employeeID: '', email: '', phone: '', department: '', dateOfJoining: '', role: '' });
         } catch (err) {
@@ -36,8 +36,7 @@ function EmployeeForm() {
             setError(errorMessage);
         }
     };
-    
-    
+
     return (
         <form onSubmit={handleSubmit}>
             <h2>Add Employee</h2>
@@ -51,7 +50,6 @@ function EmployeeForm() {
                 onChange={handleChange}
                 required
             />
-
             <input
                 placeholder='Employee ID'
                 name='employeeID'
@@ -61,7 +59,6 @@ function EmployeeForm() {
                 pattern='[A-Za-z0-9]{1,10}'
                 title='Employee ID should be alphanumeric and up to 10 characters.'
             />
-
             <input
                 placeholder='Email'
                 type='email'
@@ -71,7 +68,6 @@ function EmployeeForm() {
                 required
                 title='Please enter a valid email address.'
             />
-
             <input
                 placeholder='Phone'
                 name='phone'
@@ -81,7 +77,6 @@ function EmployeeForm() {
                 pattern='\d{10}'
                 title='Phone number should be exactly 10 digits.'
             />
-
             <select
                 name='department'
                 value={form.department}
@@ -93,7 +88,6 @@ function EmployeeForm() {
                 <option value='Engineering'>Engineering</option>
                 <option value='Marketing'>Marketing</option>
             </select>
-
             <input
                 type='date'
                 name='dateOfJoining'
@@ -103,7 +97,6 @@ function EmployeeForm() {
                 max={new Date().toISOString().split('T')[0]}
                 title='Date of joining should be a valid date in the past.'
             />
-
             <input
                 placeholder='Role'
                 name='role'
@@ -111,7 +104,6 @@ function EmployeeForm() {
                 onChange={handleChange}
                 required
             />
-
             <button type='submit'>Submit</button>
             <button type='reset' onClick={() => setForm({})}>Reset</button>
         </form>
@@ -119,3 +111,4 @@ function EmployeeForm() {
 }
 
 export default EmployeeForm;
+

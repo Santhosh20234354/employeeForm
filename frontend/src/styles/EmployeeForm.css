@@ -1,5 +1,5 @@
-
-.employee-form {
+/* Employee Form Styles */
+form {
     max-width: 500px;
     margin: 2rem auto;
     padding: 1.5rem;
@@ -11,89 +11,51 @@
     gap: 1rem;
     font-family: Arial, sans-serif;
 }
-.employee-form__title {
+
+h2 {
     text-align: center;
     margin-bottom: 1rem;
     color: #333;
-    font-size: 1.5rem;
-    font-weight: 600;
 }
 
-.employee-form__field {
-    width: 100%;
+input, select {
     padding: 0.8rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    transition: all 0.3s ease;
 }
 
-.employee-form__field:focus {
-    outline: none;
-    border-color: rgb(75, 103, 132);
-    box-shadow: 0 0 5px rgba(77, 143, 214, 0.5);
-}
-
-.employee-form__select {
-    composes: employee-form__field;
-    background-color: white;
-    cursor: pointer;
-}
-
-.employee-form__button {
+button {
     padding: 0.8rem;
+    background:rgb(95, 136, 179);
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
     transition: background 0.3s ease;
-    color: #fff;
 }
 
-.employee-form__button--submit {
-    background: rgb(95, 136, 179);
+button[type="reset"] {
+    background:rgb(164, 93, 100);
 }
 
-.employee-form__button--submit:hover {
-    background: rgb(154, 186, 220);
+button:hover {
+    background:rgb(154, 186, 220);
 }
 
-.employee-form__button--reset {
-    background: rgb(164, 93, 100);
+button[type="reset"]:hover {
+    background:rgb(230, 132, 141);
 }
 
-.employee-form__button--reset:hover {
-    background: rgb(230, 132, 141);
-}
-
-.employee-form__message {
+p {
     text-align: center;
     font-size: 0.9rem;
-    margin: 0.5rem 0;
 }
 
-.employee-form__message--error {
-    color: rgb(164, 93, 100);
-}
-
-.employee-form__message--success {
-    color: rgb(75, 103, 132);
-}
-@media (max-width: 600px) {
-    .employee-form {
-        max-width: 100%;
-        margin: 1rem;
-        padding: 1rem;
-    }
-
-    .employee-form__field,
-    .employee-form__button {
-        padding: 0.6rem;
-        font-size: 0.9rem;
-    }
-
-    .employee-form__title {
-        font-size: 1.3rem;
-    }
+input:focus, select:focus {
+    outline: none;
+    border-color:rgb(75, 103, 132);
+    box-shadow: 0 0 5px rgba(77, 143, 214, 0.5);
 }
